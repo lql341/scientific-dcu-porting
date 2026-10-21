@@ -19,6 +19,18 @@ Produce a reproducible port with:
 - target compute-node evidence for runtime, kernel, numerical, integration, and performance layers;
 - sanitized engineering notes that separate measured facts from unverified capability.
 
+## Validation tracks
+
+Use the lightest track that answers the question, and do not promote its evidence:
+
+- **new kernel/port**: full kernel, lifecycle, numerical, MPI/device-mapping and
+  performance layers;
+- **mature application/module validation**: probe the binary, keep a CPU oracle,
+  prove stage-specific device execution and apply a numerical tolerance; a new
+  kernel is not required;
+- **runtime/framework probe**: one minimal capability on the target node; it is
+  not application correctness.
+
 ## Workflow
 
 1. Read the selected `scnet-hpc` cluster profile before choosing partition, memory, GRES, module, or architecture. Use the target compute node as the source of truth.
