@@ -31,6 +31,11 @@ Use the lightest track that answers the question, and do not promote its evidenc
 - **runtime/framework probe**: one minimal capability on the target node; it is
   not application correctness.
 
+Design every track for a blank account: never assume the maintainer's module,
+prefix, modulefile or toolchain. Detect or provide the site module, a private
+module path, or a user-owned binary plus environment script, and probe the
+allocated node before claiming capability.
+
 ## Workflow
 
 1. Read the selected `scnet-hpc` cluster profile before choosing partition, memory, GRES, module, or architecture. Use the target compute node as the source of truth.

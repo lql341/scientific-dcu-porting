@@ -25,6 +25,8 @@
 - Resolve absolute tool paths before `module purge` because module setup may shadow CMake.
 - Configure explicitly with the project’s HIP and test options and the target architecture.
 - Use the cluster profile to derive partition, CPU, memory, GRES, and timeout.
+- Do not assume a maintainer-owned module or prefix; detect or provide a site
+  module, private module path, or user-owned binary plus environment script.
 - Bind the expected module/binary version and target architecture; use a private
   module path for candidate builds instead of changing site modules.
 - Validate launcher and rank topology before forcing backend options; an option
