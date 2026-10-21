@@ -34,7 +34,11 @@ Use the lightest track that answers the question, and do not promote its evidenc
 Design every track for a blank account: never assume the maintainer's module,
 prefix, modulefile or toolchain. Detect or provide the site module, a private
 module path, or a user-owned binary plus environment script, and probe the
-allocated node before claiming capability.
+allocated node before claiming capability. Prefer user-level modules/prefixes
+unless the site explicitly publishes them.
+
+The compute target is Linux even when the local agent runs on Windows, macOS or
+Linux. Keep remote paths POSIX and local helpers cross-platform.
 
 ## Workflow
 
