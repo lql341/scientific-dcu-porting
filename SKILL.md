@@ -1,6 +1,6 @@
 ---
 name: scientific-dcu-porting
-description: Plan, implement, validate, and document migrations of CFD/PDE/scientific-computing codes to Hygon DCU/DTK/HIP, using a CPU numerical oracle and target-compute-node evidence. Use for DCU porting, HIP migration, accelerator backend seams, or scientific-kernel validation; do not infer support for CUDA, Kokkos, or another cluster.
+description: Plan, implement, validate, and document migrations of CFD/PDE/scientific-computing codes to Hygon DCU/DTK/HIP, including incremental upgrades of mature applications, using a CPU numerical oracle and target-compute-node evidence. Use for DCU porting, HIP migration, version migration, accelerator backend seams, or scientific-kernel validation; do not infer support for CUDA, Kokkos, or another cluster.
 metadata:
   short-description: Port and validate scientific codes on Hygon DCU
 ---
@@ -40,6 +40,17 @@ unless the site explicitly publishes them.
 The compute target is Linux even when the local agent runs on Windows, macOS or
 Linux. Keep remote paths POSIX and local helpers cross-platform.
 
+## Incremental version migration
+
+A mature application moving to a new version is a new target, not a from-scratch
+kernel port. Keep one user-level module per version, pin the expected version,
+re-run the same CPU oracle and comparison cases, and re-baseline tolerances only
+from measured data. Separate build-environment failures (compiler/CMake/DTK/FFT/
+MPI) from application behaviour, and revalidate device-stage, rank/PME-rank,
+GPU-count and multi-node transport evidence. Read
+[references/incremental-migration.md](references/incremental-migration.md) for
+the checklist.
+
 ## Workflow
 
 1. Read the selected `scnet-hpc` cluster profile before choosing partition, memory, GRES, module, or architecture. Use the target compute node as the source of truth.
@@ -63,5 +74,7 @@ Linux. Keep remote paths POSIX and local helpers cross-platform.
 
 Read [references/porting-playbook.md](references/porting-playbook.md) for the reusable
 numerical, memory, build, test-registration, evidence, and scope checklist.
+Read [references/incremental-migration.md](references/incremental-migration.md)
+when the task is a version upgrade rather than a new port.
 
 Use the `scnet-hpc` skill for SSH, Slurm, profile, module, and compute-node operations.

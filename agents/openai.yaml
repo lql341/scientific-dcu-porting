@@ -1,4 +1,4 @@
 interface:
   display_name: "Scientific DCU Porting"
-  short_description: "Port and validate CFD codes on Hygon DCU"
-  default_prompt: "Use $scientific-dcu-porting to plan and validate this scientific-computing migration on a Hygon DCU."
+  short_description: "Port and migrate scientific codes on Hygon DCU"
+  default_prompt: "Use $scientific-dcu-porting to plan and validate this scientific-computing port or incremental version migration on a Hygon DCU."
