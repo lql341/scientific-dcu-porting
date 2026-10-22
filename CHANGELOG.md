@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1 (2026-10-22)
+
+- State the skill-role boundary: this is a porting/migration capability, not an
+  application entry point; applications are authored with scnet-app and use
+  scnet-hpc as the foundation.
+
 ## 0.3.0 (2026-10-22)
 
 - Fold the reusable mature-application regression and same-basis performance

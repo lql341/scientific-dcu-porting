@@ -8,7 +8,8 @@ metadata:
 # Scientific DCU Porting
 
 Use this skill for CFD, PDE, finite-volume, finite-difference, finite-element, and other
-scientific-computing migrations to Hygon DCU/DTK/HIP.
+scientific-computing migrations to Hygon DCU/DTK/HIP. This is a porting/migration
+capability; application skills remain the user entry points.
 
 ## Outcome
 

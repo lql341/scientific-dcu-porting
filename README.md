@@ -4,6 +4,10 @@ Version: 0.3.0
 
 A reusable Codex skill and engineering playbook for porting CFD, PDE, and other scientific-computing codes to Hygon DCU/DTK/HIP.
 
+This is a porting/migration capability, not an application entry point. Application
+skills are authored with `scnet-app`, use `scnet-hpc` as the foundation, and remain
+the single skill users load for normal workload execution.
+
 ## Contents
 
 - `SKILL.md` — the Codex skill entry point.
