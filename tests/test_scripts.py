@@ -155,6 +155,24 @@ class CheckEvidenceTests(unittest.TestCase):
         self.write_card(card)
         self.assertEqual(1, self.lint())
 
+    def test_tolerance_baseline_without_number_fails(self):
+        card = valid_card()
+        card["tolerance_baseline"] = "loose enough for this case"
+        self.write_card(card)
+        self.assertEqual(1, self.lint())
+
+    def test_tolerance_baseline_self_set_fails(self):
+        card = valid_card()
+        card["tolerance_baseline"] = "max_rel=1e-3, assumed reasonable"
+        self.write_card(card)
+        self.assertEqual(1, self.lint())
+
+    def test_tolerance_baseline_scientific_notation_passes(self):
+        card = valid_card()
+        card["tolerance_baseline"] = "energy drift < 3e-13, CPU oracle same grid"
+        self.write_card(card)
+        self.assertEqual(0, self.lint())
+
     def test_underscore_files_skipped(self):
         (self.cases / "_template.json").write_text("{}", encoding="utf-8")
         self.write_card(valid_card())

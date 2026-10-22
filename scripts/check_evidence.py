@@ -40,6 +40,17 @@ REQUIRED = REQUIRED_STRING + (
 PRIVATE_PATH = re.compile(r"/public/home/|/home/[A-Za-z0-9_.-]+/")
 FORBIDDEN_KEY = re.compile(r"(^|_)(job_?id|slurm_?job|hostname)($|_)", re.IGNORECASE)
 
+# A tolerance baseline must cite a measured numeric limit tied to an error
+# metric (e.g. 'max_rel=2e-12 over 500 steps, CPU oracle gcc build'). A
+# baseline without a number is an unmeasured - and therefore self-set -
+# threshold, which the playbook forbids.
+TOLERANCE_METRIC = re.compile(
+    r"(atol|rtol|max_?(abs|rel)|rel_?error|tolerance)\S*\s*[=:≤<]?\s*\d"
+    r"|\d+(\.\d+)?[eE][+-]?\d+")
+SELF_SET_WORDS = re.compile(
+    r"\b(tbd|todo|guess(?:ed)?|assum(?:ed|ption)|self[- ]?set|arbitrary)\b",
+    re.IGNORECASE)
+
 errors = []
 warnings = []
 
@@ -107,6 +118,15 @@ def check_card(path):
     if card.get("node_context") == "login-node" and \
             card.get("evidence_level") == "stage-on-device":
         errors.append("%s: stage-on-device evidence cannot come from a login node" % where)
+
+    baseline = card.get("tolerance_baseline")
+    if isinstance(baseline, str) and baseline.strip():
+        if SELF_SET_WORDS.search(baseline):
+            errors.append("%s: tolerance_baseline reads as self-set/unmeasured: %r"
+                          % (where, baseline))
+        elif not TOLERANCE_METRIC.search(baseline):
+            errors.append("%s: tolerance_baseline has no measured numeric limit "
+                          "tied to an error metric: %r" % (where, baseline))
 
     scan_strings(card, "$", where)
 

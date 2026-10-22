@@ -10,6 +10,9 @@
 - Check finite values, positivity, conservation, boundary conditions, and stability constraints.
 - Keep a final-state checksum/hash as an integration signal, not as the only correctness proof.
 - Re-baseline tolerances only from measured values and a written rationale.
+- Never run a self-certification loop: do not generate surrogate/demo results, set your own acceptance threshold, pass the surrogate against it, and claim the port correct. Acceptance thresholds come from the CPU oracle measured on the same case; when the oracle or a key scientific input is missing, report BLOCKED or honest PARTIAL with evidence-backed options, never PASS.
+- Label smoke/workflow-verification outputs as `engineering_validation(smoke)` and their thresholds as `engineering_threshold(smoke)`; they prove the harness runs, never numerical correctness, and must not enter acceptance reports. Do not substitute a cheaper local check for the agreed target-node validation after repairs: the validation standard survives the repair loop unchanged.
+- Reported metrics must be traceable to execution logs (single source of truth); a number that cannot be traced to a log must not enter a report.
 
 ## Mature application regression
 

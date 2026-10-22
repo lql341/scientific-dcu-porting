@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.1 (2026-10-22)
+
+- Forbid self-certification loops in the numerical contract: acceptance
+  thresholds come from the measured CPU oracle; smoke/engineering outputs
+  must be labeled `engineering_validation(smoke)` and never promoted to
+  correctness evidence; reported metrics must trace to execution logs.
+- Enforce the tolerance-baseline contract in `check_evidence.py`: a baseline
+  must cite a numeric limit tied to an error metric and must not read as
+  self-set or unmeasured.
+
 ## 0.4.0 (2026-10-22)
 
 - Add offline tooling: `scripts/compare_oracle.py` (CPU-oracle comparison with

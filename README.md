@@ -1,6 +1,6 @@
 # Scientific DCU Porting
 
-Version: 0.4.0
+Version: 0.4.1
 
 A reusable, agent-neutral skill and engineering playbook for porting CFD, PDE, and other scientific-computing codes to Hygon DCU/DTK/HIP. It works with any agent that supports the standard skill convention (Codex, Claude Code, and others).
 

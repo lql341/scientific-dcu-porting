@@ -15,7 +15,11 @@ Rules:
 - `evidence_level` is the highest level actually observed:
   `device-visible` < `backend-selected` < `stage-on-device`.
 - Re-baseline `tolerance_baseline` only from measured values with a written
-  rationale (see references/porting-playbook.md).
+  rationale (see references/porting-playbook.md). The linter requires the
+  field to cite a numeric limit tied to an error metric (e.g.
+  `max_rel=2e-12, CPU oracle same grid`) and rejects self-set or unmeasured
+  baselines; a surrogate result passed against a threshold you invented is
+  not evidence.
 - Never commit job IDs, node names, private paths or credentials. The linter
   blocks these.
 - A card does not extend to other applications, versions, precisions or
