@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0 (2026-10-22)
+
+- Add offline tooling: `scripts/compare_oracle.py` (CPU-oracle comparison with
+  finite/positivity/conservation invariants and JSON evidence reports),
+  `scripts/check_evidence.py` (case-card lint), `scripts/validate.py` (repo
+  self-checks) and the `scripts/probe_compute_node.sbatch` probe template.
+- Add `assets/cases/` for measured porting case cards, with a template and
+  lint-enforced evidence contract.
+- Add unit tests (`tests/test_scripts.py`) and a cross-platform validate
+  workflow.
+- Add Claude Code plugin manifests and `scripts/install.sh` for Codex/Claude
+  Code installation; the skill remains agent-neutral.
+
 ## 0.3.1 (2026-10-22)
 
 - State the skill-role boundary: this is a porting/migration capability, not an

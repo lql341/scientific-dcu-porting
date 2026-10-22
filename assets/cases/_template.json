@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "application": "<upstream application or module name>",
+  "upstream_version": "<pinned upstream version or commit>",
+  "dtk_version": "<DTK version measured on the target node>",
+  "target_arch": "<e.g. gfx906; from the target-node probe, not a product name>",
+  "node_context": "compute-node",
+  "evidence_level": "stage-on-device",
+  "visible_devices": 1,
+  "resource_tuple": {
+    "partition": "<partition from the scnet-hpc cluster profile>",
+    "nodes": 1,
+    "mpi_ranks": 1,
+    "cpus_per_rank": 4,
+    "dcus": 1
+  },
+  "test_summary": "<expected vs observed test counts, e.g. '42/42 gtest, 1 added HIP visibility test'>",
+  "tolerance_baseline": "<measured basis for tolerances, e.g. 'max_rel=2e-12 over 500 steps, CPU oracle gcc build'>",
+  "untested_boundaries": [
+    "<what this card does not prove: other precisions, multi-node, other archs>"
+  ]
+}

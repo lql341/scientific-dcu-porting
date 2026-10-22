@@ -65,7 +65,7 @@ matrix, same-basis benchmark and explicit numerical comparison.
 6. Treat production and diagnostic data movement separately. FullTrace may copy intermediate arrays; NoTrace should keep state resident and minimize H2D/D2H and synchronization.
 7. Make failures observable. Missing devices, HIP initialization errors, invalid API inputs, kernel/runtime errors, failed tests, and timeouts must propagate as nonzero workload and Slurm exit codes.
 8. Compare both scheduler state and workload exit code. A skipped test, empty CTest discovery, warning-only output, or login-node package visibility is not validation success.
-9. Record versions, target architecture, visible device count, test summary, resource tuple, and untested boundaries. Never commit credentials, internal hostnames, job IDs, private paths, or raw scheduler logs.
+9. Record versions, target architecture, visible device count, test summary, resource tuple, and untested boundaries. Never commit credentials, internal hostnames, job IDs, private paths, or raw scheduler logs. Persist each measured port as a case card under `assets/cases/` (copy `_template.json`) and lint it with `scripts/check_evidence.py`.
 
 ## DTK-specific cautions
 
@@ -73,6 +73,13 @@ matrix, same-basis benchmark and explicit numerical comparison.
 - Set `CMAKE_HIP_ARCHITECTURES` from the target-node probe or cluster profile. Do not copy architecture assumptions from another cluster.
 - Do not transfer upstream ROCm/CUDA claims about Triton, FP8/INT8, collectives, or kernel availability to DTK without a target-node probe.
 - Use profile-generated Slurm resources and shared-storage job temp directories; do not invent GRES or memory tuples.
+
+## Repository tooling
+
+- `scripts/probe_compute_node.sbatch` — submission template for target-node toolchain/device probing; fill every placeholder from the scnet-hpc cluster profile and derive `CMAKE_HIP_ARCHITECTURES` from the measured `gfx` value.
+- `scripts/compare_oracle.py` — offline CPU-oracle vs device field comparison (text or .npy) with atol/rtol, finite/positivity/conservation invariants, and a JSON evidence report.
+- `scripts/check_evidence.py` — lints case cards in `assets/cases/`; enforces the evidence contract and blocks private paths, job IDs, and login-node claims of on-device evidence.
+- `scripts/validate.py` — offline repository self-checks (frontmatter, links, version consistency, private-data scan).
 
 ## References
 
