@@ -11,6 +11,26 @@
 - Keep a final-state checksum/hash as an integration signal, not as the only correctness proof.
 - Re-baseline tolerances only from measured values and a written rationale.
 
+## Mature application regression
+
+For an existing application or module, reuse the project's own capability checks
+instead of inventing a new benchmark:
+
+- Run the normal and strict CPU oracle suites plus a target-node backend contract;
+  require the expected test count, not only a zero exit code.
+- Keep the main application build and the accelerator port as separate build
+  products; validate CPU, HIP and HIP+MPI configurations independently.
+- Compare performance only on the same basis: steps, repeats, warmup and resource
+  tuple must match. Re-run the baseline instead of reusing a mismatched number.
+- Compare legacy and new numerical paths with explicit absolute/relative limits,
+  not byte equality; keep the legacy path as the reference.
+- Treat compiler floors, MPI C++ binding removal and HIP `try_compile` path
+  propagation as build-environment issues, not application defects.
+- Report source/toolchain/parameters/correctness/limits together; keep raw logs
+  and private paths out of public reports.
+- Confirm scheduler terminal state, workload exit status and device visibility
+  separately.
+
 ## Memory and execution structure
 
 - Map all arrays and temporaries before writing kernels.

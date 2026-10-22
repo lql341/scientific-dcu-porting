@@ -49,7 +49,10 @@ from measured data. Separate build-environment failures (compiler/CMake/DTK/FFT/
 MPI) from application behaviour, and revalidate device-stage, rank/PME-rank,
 GPU-count and multi-node transport evidence. Read
 [references/incremental-migration.md](references/incremental-migration.md) for
-the checklist.
+the checklist. For any mature application, also use the
+[mature-application regression](references/porting-playbook.md#mature-application-regression)
+section: normal/strict CPU oracle, target backend contract, separate build
+matrix, same-basis benchmark and explicit numerical comparison.
 
 ## Workflow
 

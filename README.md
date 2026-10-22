@@ -1,13 +1,13 @@
 # Scientific DCU Porting
 
-Version: 0.2.1
+Version: 0.3.0
 
 A reusable Codex skill and engineering playbook for porting CFD, PDE, and other scientific-computing codes to Hygon DCU/DTK/HIP.
 
 ## Contents
 
 - `SKILL.md` — the Codex skill entry point.
-- `references/porting-playbook.md` — the numerical, runtime, memory, testing, evidence, and scope checklist.
+- `references/porting-playbook.md` — the numerical, runtime, memory, testing, evidence, and scope checklist, including mature-application regression checks folded in from the retired OneFLOW workflow.
 - `references/incremental-migration.md` — how to migrate a mature application to a new version without treating it as a from-scratch port.
 - `agents/openai.yaml` — UI metadata for skill discovery.
 

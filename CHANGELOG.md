@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2026-10-22)
+
+- Fold the reusable mature-application regression and same-basis performance
+  checks from the retired standalone OneFLOW workflow into the porting playbook.
+- Keep the capability abstract: CPU normal/strict oracles, target backend
+  contract, separate build matrix, same-basis benchmark and explicit numeric
+  comparison.
+
 ## 0.2.1 (2026-10-22)
 
 - Condense the incremental version-migration guidance into a short checklist.
