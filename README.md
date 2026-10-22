@@ -1,6 +1,6 @@
 # Scientific DCU Porting
 
-Version: 0.2.0
+Version: 0.2.1
 
 A reusable Codex skill and engineering playbook for porting CFD, PDE, and other scientific-computing codes to Hygon DCU/DTK/HIP.
 

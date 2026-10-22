@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 (2026-10-22)
+
+- Condense the incremental version-migration guidance into a short checklist.
+
 ## 0.2.0 (2026-10-22)
 
 - Add a version file.
